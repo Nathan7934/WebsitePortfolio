@@ -1,11 +1,77 @@
 body {
-  background-color: black;
+    background-color: black;
 }
 
-.Intro {
-  text-align: center;
-  color: white;
-  font-family: 'Oswald', sans-serif;
-  font-size: 250%;
-  margin-top: 75px;
+.intro {
+    position: relative;
+    /* text-align: center; */
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 250%;
+    margin-top: 125px;
+}
+
+/* 465px width on intro */
+
+.introWelcome {
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    /* display: inline-block; */
+    /* margin-right: 20px; */
+    opacity: 0%;
+    animation: WelcomeFadeIn_anim 1s ease-in-out 1s 1 normal forwards,
+               WelcomeSlideLeft_anim 0.75s cubic-bezier(.65,-0.03,.41,1.03) 2s 1 normal forwards;
+}
+
+.welcomeComma {
+    opacity: 0%;
+    animation: WelcomeCommaFadeIn_anim 0.75s ease-in-out 2s 1 normal forwards;
+}
+
+.nameVeil {
+    z-index: 2;
+    background-color: black;
+    position: absolute;
+    left: calc(50% + 79px);
+    transform: translate(-50%, 0%);
+    height: 60px;
+    width: 291px;
+    animation: NameVeilSlideRight_anim 1.15s cubic-bezier(0,-0.05,.49,1) 2.5s 1 normal forwards;
+}
+
+.introName {
+    z-index: 1;
+    background-color: black;
+    position: absolute;
+    left: calc(50% + 79px);
+    transform: translate(-50%, 0%);
+}
+
+/* ========== Animation Keyframes ========== */
+/* CSS syntax for shorthand 'animation' property:
+        animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+   Default values:
+        animation: none 0 ease 0 1 normal none running
+*/
+
+@keyframes WelcomeFadeIn_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes WelcomeSlideLeft_anim {
+    from {left: 50%;}
+    to {left: calc(50% - 162px);}
+}
+
+@keyframes WelcomeCommaFadeIn_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes NameVeilSlideRight_anim {
+    from {left: calc(50% + 79px);}
+    to {left: calc(50% + 370px);}
 }
