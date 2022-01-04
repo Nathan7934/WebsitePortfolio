@@ -52,6 +52,7 @@ class App extends React.Component {
                     I make practical, user-oriented applications.
                 </div>
                 {this.renderViewButtons()}
+                
             </div>
         </>);
     }
