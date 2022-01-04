@@ -2,24 +2,24 @@ body {
     background-color: black;
 }
 
+/* ========== Element Styling ========== */
+
+/* -._.-._.- Welcome Intro Styling -._.-._.- */
+/* 465px width on intro */
+
 .intro {
     position: relative;
-    /* text-align: center; */
     color: white;
     font-family: 'Oswald', sans-serif;
     font-size: 250%;
     margin-top: 125px;
 }
 
-/* 465px width on intro */
-
 .introWelcome {
     z-index: 3;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    /* display: inline-block; */
-    /* margin-right: 20px; */
     opacity: 0%;
     animation: WelcomeFadeIn_anim 1s ease-in-out 1s 1 normal forwards,
                WelcomeSlideLeft_anim 0.75s cubic-bezier(.65,-0.03,.41,1.03) 2s 1 normal forwards;
@@ -27,7 +27,7 @@ body {
 
 .welcomeComma {
     opacity: 0%;
-    animation: WelcomeCommaFadeIn_anim 0.75s ease-in-out 2s 1 normal forwards;
+    animation: WelcomeCommaFadeIn_anim 0.75s ease-in 2s 1 normal forwards;
 }
 
 .nameVeil {
@@ -38,7 +38,7 @@ body {
     transform: translate(-50%, 0%);
     height: 60px;
     width: 291px;
-    animation: NameVeilSlideRight_anim 1.15s cubic-bezier(0,-0.05,.49,1) 2.5s 1 normal forwards;
+    animation: NameVeilSlideRight_anim 0.8s cubic-bezier(0,-0.01,.72,1) 2.5s 1 normal forwards;
 }
 
 .introName {
@@ -49,12 +49,100 @@ body {
     transform: translate(-50%, 0%);
 }
 
+/* -._.-._.- Content Styling -._.-._.- */
+
+.content {
+    position: relative;
+    top: 105px;
+    opacity: 0%;
+    animation: ContentFadeIn_anim 1s ease-in 3.7s 1 normal forwards;
+}
+
+.aboutBio {
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    line-height: 24pt;
+}
+
+/* -._.-._.- View Select Buttons -._.-._.- */
+
+.viewButtons {
+    margin-top: 75px;
+    height: 50px;
+}
+
+.btnStyle {
+    background: none;
+    border: 1px solid white;
+    border-radius: 3px;
+    width: 100px;
+    height: 50px;
+    z-index: 2;
+    transform: translate(-50%, 0%);
+}
+
+.btnStyle:hover {
+    cursor: pointer;
+}
+
+.projectsBtn {
+    position: absolute;
+    left: calc(50% - 100px);
+}
+
+.resumeBtn {
+    position: absolute;
+    left: calc(50% + 100px);
+}
+
+.blackText {
+    color: rgb(19, 19, 19);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 150%;
+    padding-bottom: 2px;
+    transition: 1.25s;
+}
+
+.blackTextHoverable {
+    transition: 1s;
+}
+.blackTextHoverable:hover {
+    color: white;
+}
+
+/* -._.-._.- View Indicator State Styles -._.-._.- */
+
+.viewIndicator {
+    background-color: white;
+    border-radius: 3px;
+    width: 100px;
+    height: 50px;
+    z-index: 1;
+    transform: translate(-50%, 0%);
+}
+
+.viewIndicatorRtoL {
+    position: absolute;
+    bottom: 0px;
+    animation: viewIndicatorRtoL_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+.viewIndicatorLtoR {
+    position: absolute;
+    animation: viewIndicatorLtoR_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
 /* ========== Animation Keyframes ========== */
 /* CSS syntax for shorthand 'animation' property:
         animation: name duration timing-function delay iteration-count direction fill-mode play-state;
    Default values:
         animation: none 0 ease 0 1 normal none running
 */
+
+/* -._.-._.- Welcome Intro Animations -._.-._.- */
 
 @keyframes WelcomeFadeIn_anim {
     from {opacity: 0%;}
@@ -74,4 +162,25 @@ body {
 @keyframes NameVeilSlideRight_anim {
     from {left: calc(50% + 79px);}
     to {left: calc(50% + 370px);}
+}
+
+/* -._.-._.- Content -._.-._.- */
+
+@keyframes ContentFadeIn_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+/* -._.-._.- View Indicator Animations -._.-._.- */
+
+@keyframes viewIndicatorRtoL_anim {
+    0% {left: calc(50% + 100px); width: 100px; height: 50px;}
+    50% {width: 50px; height: 25px;}
+    100% {left: calc(50% - 100px); width: 100px; height: 50px;}
+}
+
+@keyframes viewIndicatorLtoR_anim {
+    0% {left: calc(50% - 100px); width: 100px; height: 50px;}
+    50% {width: 50px; height: 25px;}
+    100% {left: calc(50% + 100px); width: 100px; height: 50px;}
 }
