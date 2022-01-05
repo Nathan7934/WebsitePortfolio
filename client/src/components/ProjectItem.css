@@ -1,0 +1,39 @@
+.projectItem {
+    width: 360px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.previewGif {
+    background-color: white;
+    text-align: center;
+    width: 360px;
+    height: 200px;
+}
+
+.title {
+    color: white;
+    margin-top: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 125%;
+    letter-spacing: 1px;
+}
+
+.description {
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80%;
+}
+
+.accessLink {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80%;
+    opacity: 60%;
+}

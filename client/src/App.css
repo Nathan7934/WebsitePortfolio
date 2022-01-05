@@ -62,13 +62,24 @@ body {
     text-align: center;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    font-size: 115%;
     font-weight: 200;
     line-height: 24pt;
+}
+
+.projects {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 900px;
+    margin-top: 50px;
+    text-align: center;
 }
 
 /* -._.-._.- View Select Buttons -._.-._.- */
 
 .viewButtons {
+    position: relative;
     margin-top: 75px;
     height: 50px;
 }
