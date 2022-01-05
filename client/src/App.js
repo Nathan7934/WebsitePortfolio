@@ -1,8 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Document, Page } from 'react-pdf';
 
 import ProjectItem from './components/ProjectItem';
-import Resume from './components/Resume';
+import resumePDF from './resources/Resume.pdf';
 import './App.css';
 
 /* 
@@ -22,34 +23,32 @@ class App extends React.Component {
             The content of the cards is passed through to the component code as properties.
         */
         return (<>
-            <div className="projects">
-                {/* The required props are: <title=str> <description=str> <aLinkURL=str> <aLinkText=str> */}
-                <ProjectItem title="SimpleScripter"
-                             description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                           Sed justo nibh, ultricies et elementum a, elementum.`}
-                             aLinkURL=""
-                             aLinkText="View the demo"/>
-                <ProjectItem title="QuizEra"
-                             description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                           Sed justo nibh, ultricies et elementum a, elementum.`}
-                             aLinkURL=""
-                             aLinkText="View the demo"/>
-                <ProjectItem title="Breakfast Club"
-                             description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                           Sed justo nibh, ultricies et elementum a, elementum.`}
-                             aLinkURL=""
-                             aLinkText="View the demo"/>
-                <ProjectItem title="Event Scheduler CLI"
-                             description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                           Sed justo nibh, ultricies et elementum a, elementum.`}
-                             aLinkURL=""
-                             aLinkText="View the demo"/>
-                <ProjectItem title="This Portfolio Site"
-                             description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                           Sed justo nibh, ultricies et elementum a, elementum.`}
-                             aLinkURL=""
-                             aLinkText="View source code"/>
-            </div>
+            {/* The required props are: <title=str> <description=str> <aLinkURL=str> <aLinkText=str> */}
+            <ProjectItem title="SimpleScripter"
+                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            aLinkURL=""
+                            aLinkText="View the demo"/>
+            <ProjectItem title="QuizEra"
+                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            aLinkURL=""
+                            aLinkText="View the demo"/>
+            <ProjectItem title="Breakfast Club"
+                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            aLinkURL=""
+                            aLinkText="View the demo"/>
+            <ProjectItem title="Event Scheduler CLI"
+                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            aLinkURL=""
+                            aLinkText="View the demo"/>
+            <ProjectItem title="This Portfolio Site"
+                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            aLinkURL=""
+                            aLinkText="View source code"/>
         </>);
     }
 
@@ -66,7 +65,7 @@ class App extends React.Component {
                         this.setState({projects_left: true});
                     }
                 }}><div className={clsx({blackText: true, blackTextHoverable: !this.state.projects_left})}>
-                    Projects</div>
+                    <div className="blackTextText">Projects</div></div>
                 </button>
                 <div className={clsx({viewIndicatorRtoL: this.state.projects_left, 
                     viewIndicatorLtoR: !this.state.projects_left, viewIndicator: true})}></div>
@@ -77,20 +76,41 @@ class App extends React.Component {
                         this.setState({projects_left: false});
                     }
                 }}><div className={clsx({blackText: true, blackTextHoverable: this.state.projects_left})}>
-                    R&eacute;sum&eacute;</div>
+                    <div className="blackTextText">R&eacute;sum&eacute;</div></div>
                 </button>
             </div>
         </>);
     }
 
+    removeTextLayerOffset = () => {
+        // Fixes the terrible text-highlighting offset for the résumé PDF.
+        // Solution taken from react-pdf 'issues' page: 
+        // https://github.com/wojtekmaj/react-pdf/issues/332#issuecomment-458121654
+
+        const textLayers = document.querySelectorAll(".react-pdf__Page__textContent");
+          textLayers.forEach(layer => {
+            const { style } = layer;
+            style.top = "0";
+            style.left = "0";
+            style.transform = "";
+        });
+      }
+
     renderSelectedView = () => {
         // Renders the appropriate view depending on the state of 'projects_left'
 
-        if (this.state.projects_left) {
-            return (<>{this.renderProjects()}</>);
-        } else {
-            return (<Resume className="resume"/>);
-        }
+        return (<>
+            <div className={clsx({projects: true, projectsLtoC: this.state.projects_left, projectsCtoL: !this.state.projects_left})}>
+                {this.renderProjects()}
+            </div>
+            <div className={clsx({resume: true, resumeRtoC: !this.state.projects_left, resumeCtoR: this.state.projects_left})}>
+                 {/* Rendering PDF file using 'react-pdf' npm module */}
+                 <Document file={resumePDF}>
+                     <Page pageNumber={1} onLoadSuccess={this.removeTextLayerOffset}/>
+                 </Document>
+                 <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
+             </div>
+        </>);
     }
 
     render() {

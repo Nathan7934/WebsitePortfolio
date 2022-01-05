@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    overflow-x: hidden;
 }
 
 /* ========== Element Styling ========== */
@@ -49,11 +50,33 @@ body {
     transform: translate(-50%, 0%);
 }
 
+/* === W.I. Animations === */
+@keyframes WelcomeFadeIn_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes WelcomeSlideLeft_anim {
+    from {left: 50%;}
+    to {left: calc(50% - 162px);}
+}
+
+@keyframes WelcomeCommaFadeIn_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes NameVeilSlideRight_anim {
+    from {left: calc(50% + 79px);}
+    to {left: calc(50% + 370px);}
+}
+
 /* -._.-._.- Content Styling -._.-._.- */
 
 .content {
     position: relative;
     top: 105px;
+    height: 1200px;
     opacity: 0%;
     animation: ContentFadeIn_anim 1s ease-in 3.7s 1 normal forwards;
 }
@@ -69,11 +92,77 @@ body {
 
 .projects {
     position: absolute;
-    left: 50%;
+    left: -150%;
     transform: translate(-50%, 0%);
     width: 900px;
     margin-top: 50px;
     text-align: center;
+    opacity: 0%;
+}
+.projectsLtoC {
+    animation: ProjectsFadeLtoC_anim 0.5s cubic-bezier(.5,0,.5,1) 0s 1 normal forwards;
+}
+.projectsCtoL {
+    animation: ProjectsFadeCtoL_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+.resume {
+    position: absolute;
+    left: 150%;
+    opacity: 0%;
+    transform: translate(-50%, 0%);
+    margin-top: 50px;
+    line-height: 1;
+}
+.resumeRtoC {
+    animation: ResumeFadeRtoC_anim 0.5s cubic-bezier(.5,0,.5,1) 0s 1 normal forwards;
+}
+.resumeCtoR {
+    animation: ResumeFadeCtoR_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+.pdfDownload {
+    position: absolute;
+    opacity: 15%;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    transition: 0.5s;
+}
+
+.pdfDownload:hover {
+    opacity: 50%;
+}
+
+/* === C. Animations === */
+@keyframes ContentFadeIn_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes ProjectsFadeLtoC_anim {
+    0% {opacity: 0%; left: -150%;}
+    0.01% {opacity: 0%; left: calc(50% - 750px);}
+    100% {opacity: 100%; left: 50%;}
+}
+
+@keyframes ProjectsFadeCtoL_anim {
+    0% {opacity: 100%; left: 50%;}
+    99.99% {opacity: 0%; left: calc(50% - 1000px);}
+    100% {opacity: 0%; left: -150%;}
+}
+
+@keyframes ResumeFadeRtoC_anim {
+    0% {opacity: 0%; left: 150%;}
+    0.01% {opacity: 0%; left: calc(50% + 750px);}
+    100% {opacity: 100%; left: 50%;}
+}
+
+@keyframes ResumeFadeCtoR_anim {
+    0% {opacity: 100%; left: 50%;}
+    99.99% {opacity: 0%; left: calc(50% + 1000px);}
+    100% {opacity: 0%; left: 150%;}
 }
 
 /* -._.-._.- View Select Buttons -._.-._.- */
@@ -109,16 +198,28 @@ body {
 }
 
 .blackText {
-    color: rgb(19, 19, 19);
+    position: relative;
+    right: 7px;
+    top: 0px;
+    color: rgb(37, 37, 37);
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     font-size: 150%;
-    padding-bottom: 2px;
     transition: 1.25s;
+    width: 100px;
+    height: 50px;
+    border-radius: 3px;
+}
+
+.blackTextText {
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    transform: translate(-50%, 0%);
 }
 
 .blackTextHoverable {
-    transition: 1s;
+    transition: 0.5s;
 }
 .blackTextHoverable:hover {
     color: white;
@@ -146,44 +247,7 @@ body {
     animation: viewIndicatorLtoR_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
 }
 
-/* ========== Animation Keyframes ========== */
-/* CSS syntax for shorthand 'animation' property:
-        animation: name duration timing-function delay iteration-count direction fill-mode play-state;
-   Default values:
-        animation: none 0 ease 0 1 normal none running
-*/
-
-/* -._.-._.- Welcome Intro Animations -._.-._.- */
-
-@keyframes WelcomeFadeIn_anim {
-    from {opacity: 0%;}
-    to {opacity: 100%;}
-}
-
-@keyframes WelcomeSlideLeft_anim {
-    from {left: 50%;}
-    to {left: calc(50% - 162px);}
-}
-
-@keyframes WelcomeCommaFadeIn_anim {
-    from {opacity: 0%;}
-    to {opacity: 100%;}
-}
-
-@keyframes NameVeilSlideRight_anim {
-    from {left: calc(50% + 79px);}
-    to {left: calc(50% + 370px);}
-}
-
-/* -._.-._.- Content -._.-._.- */
-
-@keyframes ContentFadeIn_anim {
-    from {opacity: 0%;}
-    to {opacity: 100%;}
-}
-
-/* -._.-._.- View Indicator Animations -._.-._.- */
-
+/* === V.I.S. Animations === */
 @keyframes viewIndicatorRtoL_anim {
     0% {left: calc(50% + 100px); width: 100px; height: 50px;}
     50% {width: 50px; height: 25px;}
@@ -195,3 +259,11 @@ body {
     50% {width: 50px; height: 25px;}
     100% {left: calc(50% + 100px); width: 100px; height: 50px;}
 }
+
+
+/* ========== Animation Keyframes ========== */
+/* CSS syntax for shorthand 'animation' property:
+        animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+   Default values:
+        animation: none 0 ease 0 1 normal none running
+*/
