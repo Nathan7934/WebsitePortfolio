@@ -3,6 +3,21 @@ body {
     overflow-x: hidden;
 }
 
+/* ========== Custom Scrollbar Styling ========== */
+
+::-webkit-scrollbar {
+    width: 3px;
+}  
+::-webkit-scrollbar-track {
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background: #252525;
+}
+::-webkit-scrollbar-thumb:hover {
+background: rgb(58, 58, 58);
+}
+
 /* ========== Element Styling ========== */
 
 /* -._.-._.- Welcome Intro Styling -._.-._.- */
@@ -123,14 +138,13 @@ body {
 
 .pdfDownload {
     position: absolute;
-    opacity: 15%;
+    opacity: 30%;
     top: 10px;
     right: 10px;
     width: 35px;
     height: 35px;
     transition: 0.5s;
 }
-
 .pdfDownload:hover {
     opacity: 50%;
 }

@@ -1,0 +1,197 @@
+/* 
+    The stylesheet for the compact (i.e. mobile) view.
+    The width threshold is 900px.
+
+    Relevant components will use classes from either App.css or AppCompact.css 
+    depending on the 'use_compact' state in App.js
+*/
+
+/* -._.-._.- Welcome Intro Compact Styling -._.-._.- */
+
+.intro_C {
+    position: relative;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    white-space: nowrap;
+    font-size: 185%;
+    margin-top: 125px;
+}
+
+.introWelcome_C {
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    opacity: 0%;
+    animation: WelcomeFadeIn_anim 1s ease-in-out 1s 1 normal forwards,
+               WelcomeSlideLeft_C_anim 0.75s cubic-bezier(.65,-0.03,.41,1.03) 2s 1 normal forwards;
+}
+
+.welcomeComma_C {
+    opacity: 0%;
+    animation: WelcomeCommaFadeIn_anim 0.75s ease-in 2s 1 normal forwards;
+}
+
+.nameVeil_C {
+    z-index: 2;
+    background-color: black;
+    position: absolute;
+    left: calc(50% + 60px);
+    transform: translate(-50%, 0%);
+    height: 60px;
+    width: 291px;
+    animation: NameVeilSlideRight_C_anim 0.8s cubic-bezier(0,-0.01,.72,1) 2.5s 1 normal forwards;
+}
+
+.introName_C {
+    z-index: 1;
+    background-color: black;
+    position: absolute;
+    left: calc(50% + 60px);
+    transform: translate(-50%, 0%);
+}
+
+/* === W.I.C. Animations === */
+
+@keyframes WelcomeSlideLeft_C_anim {
+    from {left: 50%;}
+    to {left: calc(50% - 115px);}
+}
+
+@keyframes NameVeilSlideRight_C_anim {
+    from {left: calc(50% + 60px);}
+    to {left: calc(50% + 351px);}
+}
+
+/* -._.-._.- Content Compact Styling -._.-._.- */
+
+.aboutBio_C {
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100%;
+    font-weight: 200;
+    line-height: 24pt;
+}
+
+.breakDisabled {
+    display: none;
+}
+
+.projects_C {
+    position: absolute;
+    left: -150%;
+    transform: translate(-50%, 0%);
+    width: 380px;
+    margin-top: 50px;
+    text-align: center;
+    opacity: 0%;
+}
+.projectsLtoC_C {
+    animation: ProjectsFadeLtoC_C_anim 0.5s cubic-bezier(.5,0,.5,1) 0s 1 normal forwards;
+}
+.projectsCtoL_C {
+    animation: ProjectsFadeCtoL_C_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+.resume_C {
+    position: absolute;
+    left: 150%;
+    width: 359px;
+    height: 465px;
+    opacity: 0%;
+    transform: translate(-50%, 0%);
+    margin-top: 50px;
+    line-height: 1;
+}
+.resumeRtoC_C {
+    animation: ResumeFadeRtoC_C_anim 0.5s cubic-bezier(.5,0,.5,1) 0s 1 normal forwards;
+}
+.resumeCtoR_C {
+    animation: ResumeFadeCtoR_C_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+.pdfDownload_C {
+    position: absolute;
+    opacity: 30%;
+    left: 50%;
+    top: calc(50% - 30px);
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    transition: 0.5s;
+}
+.pdfDownload_C:hover {
+    opacity: 50%;
+}
+
+/* === C.C. Animations === */
+
+@keyframes ProjectsFadeLtoC_C_anim {
+    0% {opacity: 0%; left: -150%;}
+    0.01% {opacity: 0%; left: calc(50% - 750px);}
+    100% {opacity: 100%; left: 50%;}
+}
+
+@keyframes ProjectsFadeCtoL_C_anim {
+    0% {opacity: 100%; left: 50%;}
+    99.99% {opacity: 0%; left: calc(50% - 1000px);}
+    100% {opacity: 0%; left: -150%;}
+}
+
+@keyframes ResumeFadeRtoC_C_anim {
+    0% {opacity: 0%; left: 150%;}
+    0.01% {opacity: 0%; left: calc(50% + 750px);}
+    100% {opacity: 100%; left: 50%;}
+}
+
+@keyframes ResumeFadeCtoR_C_anim {
+    0% {opacity: 100%; left: 50%;}
+    99.99% {opacity: 0%; left: calc(50% + 1000px);}
+    100% {opacity: 0%; left: 150%;}
+}
+
+/* -._.-._.- View Select Buttons Compact -._.-._.- */
+
+.viewButtons_C {
+    position: relative;
+    margin-top: 60px;
+    height: 50px;
+}
+
+.projectsBtn_C {
+    position: absolute;
+    left: calc(50% - 72px);
+}
+
+.resumeBtn_C {
+    position: absolute;
+    left: calc(50% + 72px);
+}
+
+/* -._.-._.- View Indicator State Compact Styles -._.-._.- */
+
+.viewIndicatorRtoL_C {
+    position: absolute;
+    bottom: 0px;
+    animation: viewIndicatorRtoL_C_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+.viewIndicatorLtoR_C {
+    position: absolute;
+    animation: viewIndicatorLtoR_C_anim 0.5s cubic-bezier(.7,0,.3,1) 0s 1 normal forwards;
+}
+
+/* === V.I.S.C. Animations === */
+
+@keyframes viewIndicatorRtoL_C_anim {
+    0% {left: calc(50% + 72px); width: 100px; height: 50px;}
+    50% {width: 50px; height: 25px;}
+    100% {left: calc(50% - 72px); width: 100px; height: 50px;}
+}
+
+@keyframes viewIndicatorLtoR_C_anim {
+    0% {left: calc(50% - 72px); width: 100px; height: 50px;}
+    50% {width: 50px; height: 25px;}
+    100% {left: calc(50% + 72px); width: 100px; height: 50px;}
+}
