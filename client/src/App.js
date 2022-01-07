@@ -118,7 +118,9 @@ class App extends React.Component {
     renderResume = (use_compact) => {
         if (use_compact) {
             return (<>
-                <img src="resumeCompact.png"></img>
+                <div style={{margin: "0 auto", maxWidth: "900px", textAlign: "center"}}>
+                    <img src="resumeCompact.png" style={{maxWidth: "100%", height: "auto"}}></img>
+                </div>
                 <a className="pdfDownload_C" href="./Resume.pdf" download><img src="pdfDownload_C.png"></img></a>
             </>);
         }

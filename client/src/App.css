@@ -1,6 +1,9 @@
+html, body {
+    overflow-x: hidden;
+}
 body {
     background-color: black;
-    overflow-x: hidden;
+    position: relative;
 }
 
 /* ========== Custom Scrollbar Styling ========== */
