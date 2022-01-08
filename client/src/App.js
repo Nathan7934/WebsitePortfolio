@@ -75,7 +75,7 @@ class App extends React.Component {
                             use_compact={use_compact}/>
             <ProjectItem title="Event Scheduler CLI"
                             description={`Includes a robust messenger subprogram complete with group
-                                          conversations. Strong adherence to SOLID design principles.`}
+                                          conversations.`}
                             aLinkURL=""
                             aLinkText="View source code"
                             previewPath="project_previews/es_preview.mp4"
