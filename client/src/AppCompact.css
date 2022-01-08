@@ -65,6 +65,14 @@
 
 /* -._.-._.- Content Compact Styling -._.-._.- */
 
+.content_C {
+    position: relative;
+    top: 105px;
+    height: 1800px;
+    opacity: 0%;
+    animation: ContentFadeIn_C_anim 1s ease-in 3.7s 1 normal forwards;
+}
+
 .aboutBio_C {
     text-align: center;
     color: white;
@@ -126,6 +134,11 @@
 }
 
 /* === C.C. Animations === */
+
+@keyframes ContentFadeIn_C_anim {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
 
 @keyframes ProjectsFadeLtoC_C_anim {
     0% {opacity: 0%; left: -150%;}

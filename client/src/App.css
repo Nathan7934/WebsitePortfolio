@@ -1,9 +1,7 @@
-html, body {
-    overflow-x: hidden;
-}
 body {
     background-color: black;
     position: relative;
+    overflow-x: hidden;
 }
 
 /* ========== Custom Scrollbar Styling ========== */
@@ -94,7 +92,7 @@ background: rgb(58, 58, 58);
 .content {
     position: relative;
     top: 105px;
-    height: 1200px;
+    height: 1100px;
     opacity: 0%;
     animation: ContentFadeIn_anim 1s ease-in 3.7s 1 normal forwards;
 }

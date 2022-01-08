@@ -32,40 +32,55 @@ class App extends React.Component {
     updateViewWidth() {
         this.setState({use_compact: window.innerWidth < 900 ? true : false});
         if (this.state.use_compact) { console.log("Compact mode enabled") }
-        console.log("View width updated");
     }
 
-    renderProjects = () => {
+    renderProjects = (use_compact) => {
         /*  Renders the project items/cards using the ProjectItem React component.
             The content of the cards is passed through to the component code as properties.
         */
+
         return (<>
             {/* The required props are: <title=str> <description=str> <aLinkURL=str> <aLinkText=str> */}
             <ProjectItem title="SimpleScripter"
-                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            description={`A user-friendly Java Swing scripting application for automating desktop 
+                                          inputs.`}
                             aLinkURL=""
-                            aLinkText="View the demo"/>
+                            aLinkText="View the demo"
+                            previewPath="project_previews/ss_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/ss_thumbnail.png"
+                            use_compact={use_compact}/>
             <ProjectItem title="QuizEra"
-                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            description={`A JavaScript library that allows 
+                                          web developers to generate custom interactive timeline quizzes.`}
                             aLinkURL=""
-                            aLinkText="View the demo"/>
+                            aLinkText="View the demo"
+                            previewPath="project_previews/qe_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
+                            use_compact={use_compact}/>
+            <ProjectItem title="Portfolio Site"
+                            description={`Built using ReactJS. The styling, 
+                                          animations, layouts and components were done by hand.`}
+                            aLinkURL="https://github.com/Nathan7934/WebsitePortfolio"
+                            aLinkText="Source code"
+                            previewPath="project_previews/wp_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/wp_thumbnail.png"
+                            use_compact={use_compact}/>
             <ProjectItem title="Breakfast Club"
-                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            description={`A food-based social media prototype with an Express back end
+                                          handling database queries.`}
                             aLinkURL=""
-                            aLinkText="View the demo"/>
+                            aLinkText="View the demo"
+                            previewPath="project_previews/bc_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/bc_thumbnail.png"
+                            use_compact={use_compact}/>
             <ProjectItem title="Event Scheduler CLI"
-                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Sed justo nibh, ultricies et elementum a, elementum.`}
+                            description={`Includes a robust messenger subprogram complete with group
+                                          conversations. Strong adherence to SOLID design principles.`}
                             aLinkURL=""
-                            aLinkText="View the demo"/>
-            <ProjectItem title="This Portfolio Site"
-                            description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Sed justo nibh, ultricies et elementum a, elementum.`}
-                            aLinkURL=""
-                            aLinkText="View source code"/>
+                            aLinkText="View source code"
+                            previewPath="project_previews/es_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/es_thumbnail.png"
+                            use_compact={use_compact}/>
         </>);
     }
 
@@ -140,7 +155,7 @@ class App extends React.Component {
             <div className={clsx({projects: !use_compact, projects_C: use_compact,
                                   projectsLtoC: projects_left && !use_compact, projectsLtoC_C: projects_left && use_compact, 
                                   projectsCtoL: !projects_left && !use_compact, projectsCtoL_C: !projects_left && use_compact})}>
-                {this.renderProjects()}
+                {this.renderProjects(use_compact)}
             </div>
             <div className={clsx({resume: !use_compact, resume_C: use_compact, 
                                   resumeRtoC: !projects_left && !use_compact, resumeRtoC_C: !projects_left && use_compact,
@@ -169,7 +184,7 @@ class App extends React.Component {
                 <div className={clsx({nameVeil: !use_compact, nameVeil_C: use_compact})}></div>
                 <div className={clsx({introName: !use_compact, introName_C: use_compact})}>I'm Nathan Raymant</div>
             </div>
-            <div className="content">
+            <div className={clsx({content: !use_compact, content_C: use_compact})}>
                 <div className={clsx({aboutBio: !use_compact, aboutBio_C: use_compact})}>
                     A Toronto based software developer and student. 
                     <br className={clsx({breakDisabled: use_compact})}/>

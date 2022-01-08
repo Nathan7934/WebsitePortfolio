@@ -1,4 +1,5 @@
 import React from 'react';
+import HoverVideoPlayer from 'react-hover-video-player';
 
 import './ProjectItem.css';
 
@@ -9,16 +10,42 @@ class ProjectItem extends React.Component {
         The required props are: <title=str> <description=str> <aLinkURL=str> <aLinkText=str>
     */
 
+    determinePauseOverlay = () => {
+        const {title, pThumbnailPath, use_compact} = this.props;
+        if (use_compact) {
+            return (<img src={pThumbnailPath} alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>);
+        }
+        return (<div className="previewVeil">
+            <div className="previewVeilText">{title}</div>
+        </div>);
+    }
+
+    ifCompactRenderTitle = () => {
+        const {title, use_compact} = this.props;
+        if (use_compact) {
+            return (<div className="title">{title}</div>);
+        }
+        return (<></>);
+    }
+
     render() {
-        const {title, description, aLinkURL, aLinkText} = this.props;
+        const {title, description, aLinkURL, aLinkText, previewPath} = this.props;
 
         return (<>
             <div className="projectItem">
-                <div className="previewGif">Preview gif</div>
+                <HoverVideoPlayer className="previewGif"
+                    videoSrc={previewPath}
+                    pausedOverlay={this.determinePauseOverlay()}
+                    loadingOverlay={
+                        <div className="loading-overlay">
+                            <div className="loading-spinner" />
+                        </div>
+                    }
+                />
                 <div className="projectInfo">
-                    <div className="title">{title}</div>
+                    {this.ifCompactRenderTitle()}
                     <div className="description">{description}</div>
-                    <a className="accessLink" href={aLinkURL}>{aLinkText}</a>
+                    <a className="accessLink" href={aLinkURL} target="_blank">{aLinkText}</a>
                 </div>
             </div>
         </>);
