@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import HoverVideoPlayer from 'react-hover-video-player';
 
 import './ProjectItem.css';
@@ -29,7 +30,7 @@ class ProjectItem extends React.Component {
     }
 
     render() {
-        const {title, description, aLinkURL, aLinkText, previewPath} = this.props;
+        const {description, aLinkURL, aLinkText, previewPath, use_compact} = this.props;
 
         return (<>
             <div className="projectItem">
@@ -41,6 +42,7 @@ class ProjectItem extends React.Component {
                             <div className="loading-spinner" />
                         </div>
                     }
+                    preload={clsx({auto: !use_compact, metadata: use_compact})}
                 />
                 <div className="projectInfo">
                     {this.ifCompactRenderTitle()}

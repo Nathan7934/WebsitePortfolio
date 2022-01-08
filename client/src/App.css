@@ -1,6 +1,8 @@
 body {
     background-color: black;
-    position: relative;
+}
+
+html {
     overflow-x: hidden;
 }
 
