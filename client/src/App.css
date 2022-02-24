@@ -92,6 +92,32 @@ background: rgb(58, 58, 58);
     to {left: calc(50% + 370px);}
 }
 
+/* -._.-._.- Contact Stylying -._.-._.- */
+
+.contactIco {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    transform: translate(-50%, 0%);
+    margin-top: 20px;
+}
+
+.linkedIn {
+    left: calc(50% - 60px);
+}
+
+.email {
+    left: 50%;
+}
+
+.email:hover {
+    cursor: pointer;
+}
+
+.gitHub {
+    left: calc(50% + 60px);
+}
+
 /* -._.-._.- Content Styling -._.-._.- */
 
 .content {
@@ -189,7 +215,7 @@ background: rgb(58, 58, 58);
 
 .viewButtons {
     position: relative;
-    margin-top: 75px;
+    margin-top: 100px;
     height: 50px;
 }
 
@@ -221,7 +247,7 @@ background: rgb(58, 58, 58);
     position: relative;
     right: 7px;
     top: 0px;
-    color: rgb(37, 37, 37);
+    color: rgb(75, 75, 75);
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     font-size: 150%;

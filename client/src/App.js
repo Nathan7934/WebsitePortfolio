@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Document, Page } from 'react-pdf';
+import { Linking } from 'react-native'
 
 import ProjectItem from './components/ProjectItem';
 import resumePDF from './resources/Resume.pdf';
@@ -81,6 +82,22 @@ class App extends React.Component {
                             previewPath="project_previews/es_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/es_thumbnail.png"
                             use_compact={use_compact}/>
+        </>);
+    }
+
+    renderContacts = () => {
+        /*  Renders the contact buttons (linkedIn, email, GitHub)
+        */
+        return(<>
+            <a title="LinkedIn" className="linkedIn contactIco" href="https://www.linkedin.com/in/nathanraymant/">
+                <img src="linkedin.png" width="100%" height="100%"></img>
+            </a>
+            <a title="nathanraymant@gmail.com" className="email contactIco" onClick={() => Linking.openURL('mailto:nathanraymant@gmail.com')}>
+                <img src="email.png" width="100%" height="100%"></img>
+            </a>
+            <a title="GitHub" className="gitHub contactIco" href="https://github.com/Nathan7934">
+                <img src="github.png" width="100%" height="100%"></img>
+            </a>
         </>);
     }
 
@@ -190,6 +207,7 @@ class App extends React.Component {
                     <br className={clsx({breakDisabled: use_compact})}/>
                     {this.determineAboutInLineSpace()}
                 </div>
+                {this.renderContacts()}
                 {this.renderViewButtons(use_compact, projects_left)}
                 {this.renderSelectedView(use_compact, projects_left)}
             </div>
