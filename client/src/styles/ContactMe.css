@@ -1,0 +1,37 @@
+.contactIco {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    transform: translate(-50%, 0%);
+    margin-top: 20px;
+    transition: 0.25s
+}
+
+.contactIco:hover {
+    /* animation: iconHoverStart 0.25s ease-in 0s 1 normal forwards */
+    margin-top: 15px;
+    padding-bottom: 5px;
+}
+
+@keyframes iconHoverStart {
+    from {  margin-top: 20px;
+            padding-bottom: 0px; }
+    to {    margin-top: 15px;
+            padding-bottom: 5px; }
+}
+
+.linkedIn {
+    left: calc(50% - 60px);
+}
+
+.email {
+    left: 50%;
+}
+
+.email:hover {
+    cursor: pointer;
+}
+
+.gitHub {
+    left: calc(50% + 60px);
+}

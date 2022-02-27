@@ -92,32 +92,6 @@ background: rgb(58, 58, 58);
     to {left: calc(50% + 370px);}
 }
 
-/* -._.-._.- Contact Stylying -._.-._.- */
-
-.contactIco {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    transform: translate(-50%, 0%);
-    margin-top: 20px;
-}
-
-.linkedIn {
-    left: calc(50% - 60px);
-}
-
-.email {
-    left: 50%;
-}
-
-.email:hover {
-    cursor: pointer;
-}
-
-.gitHub {
-    left: calc(50% + 60px);
-}
-
 /* -._.-._.- Content Styling -._.-._.- */
 
 .content {
