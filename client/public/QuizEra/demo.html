@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>QuizEra Demonstration</title>
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer type="text/javascript" src='QuizEra.js'></script>
+        <script defer type="text/javascript" src='examples.js'></script>
+    </head>
+    <body>
+        <div style='position: relative; width: 1100px; margin: auto;'>
+            <h1 style='text-align: center; margin-bottom: 25px;'>QuizEra Demonstration</h1>
+            <p style='font-size: 14pt; text-indent: 30px; margin-bottom: 25px;'>
+                Welcome. Here you will find a demonstration of my <b>JavaScript</b> library, <i>QuizEra</i>. The primary
+                utility of QuizEra is to allow developers to <b>easily generate interactive timeline quizzes</b>
+                that can be embedded anywhere in a site's HTML. Quizzes present the user with a timeline 
+                populated with proportionally spaced events called 'nodes', each displaying a year and a
+                blank answer field upon click. The task of the user is to drag each of the choices displayed
+                beneath the timeline and place them in what they believe is the appropriate corresponding
+                node's answer field. Once the user is finished they can click the 'Done' button to receive
+                a score based on the number of correctly placed events. 
+            </p>
+            <div style='position: absolute; left: 0px; width: 600px; height: 400px;'>
+                <p style='font-size: 14pt;  padding-right: 15px; margin-bottom: 0px;'>
+                    Let's consider an example use case: <i>Say we are a developer running a history blog</i> and we just
+                    wrote a post covering a simplified history of the Western Roman Empire, QuizEra would then be
+                    a perfect tool to improve our readers' engagement and test their comprehension. We can create a
+                    timeline quiz with a few QuizEra function calls. Embedded to the right is such a quiz, generated
+                    with the following JavaScript code:
+                </p>
+                <pre style='margin-top: 0px; margin-bottom: 0px;'>
+                    <code style='background-color: #eee; border: 1px solid #999; display: block; width: 540px;
+                    padding-left: 20px; padding-right: 20px; border-radius: 10px;'> 
+<span style='color: #1e1e83'>const quiz</span> = new QuizEra();
+<span style='color: #1e1e83'>quiz</span>.createNode(<span style='color: #457462'>80</span>, <span style='color: #b96d4a;'>'The colosseum is built in Rome by emperor Vespasian.'</span>);
+<span style='color: #1e1e83'>quiz</span>.createNode(<span style='color: #457462'>166</span>, <span style='color: #b96d4a;'>'Trade is established between Rome and China'</span>);
+<span style='color: #1e1e83'>quiz</span>.createNode(<span style='color: #457462'>306</span>, <span style='color: #b96d4a;'>'Constantine becomes the emperor of Rome'</span>);
+<span style='color: #1e1e83'>quiz</span>.createNode(<span style='color: #457462'>380</span>, <span style='color: #b96d4a;'>'Christianity becomes the official religion of Rome'</span>);
+<span style='color: #1e1e83'>quiz</span>.createNode(<span style='color: #457462'>410</span>, <span style='color: #b96d4a;'>'The city of Rome is sacked by an army of Visigoths.'</span>);
+<span style='color: #1e1e83'>quiz</span>.generateQuiz(<span style='color: #457462'>550</span>, <span style='color: #1e1e83'>false</span>, <span style='color: #b96d4a;'>'#quiz-1'</span>);
+<span style='color: #1a7e30;'>// signature: generateQuiz(width (int), border (str), parent_element_id (str)) </span>
+                    </code>
+                </pre>
+                <p style='font-size: 14pt;  padding-right: 15px; margin-top: 0px;'>
+                    <span style='text-decoration: underline;'>Try it out!</span> Click a node on the timeline to display its answer field, then <i>drag and drop</i> the appropriate event.
+                    Press done when you're finished.
+                </p>
+            </div>
+            <div id='quiz-1' style='position: absolute; right: 0px; width: 500px;'></div>
+            <div style="height: 400px;"></div>
+            <p style='font-size: 14pt; margin-top: 0px;'>
+                As you can see, it is incredibly easy to create your own custom quiz. Simply create a <span style="font-family: 'Courier New'">QuizEra</span> instance and add up to 26 nodes using the
+                <span style="font-family: 'Courier New'">createNode()</span> function, and generate the quiz using the <span style="font-family: 'Courier New'">generateQuiz()</span> function. 
+                Each have the following signatures:
+                <div style='font-size: 14pt; position: relative; left: 30px; margin-top: -10px;'>
+                    <b>createNode(year </b>[int]<b>, description </b>[String]<b>)</b> - Creates a node/event with the specified year and description. <br>
+                </div>
+                <div style='font-size: 14pt; position: relative; left: 30px; margin-top: 10px;'>
+                    <b>generateQuiz(width </b>[int]<b>, border </b>[bool]<b>, parent_element_id </b>[String]<b>)</b> - Generates the quiz with the specified width (pixels), whether to generate a border, and the jQuery selector for the parent element in the DOM.
+                </div>
+            </p>
+            <p style='font-size: 14pt; margin-bottom: 0px; margin-top: -7px;'>
+                Quizzes have a height of 400px and can have any width greater than 300px. The order of draggable nodes and their respective alphabetical tags is randomly determined upon generation. 
+                Nodes on the timeline are <i>proportionally spaced</i> based on their years; the nodes with the earliest and latest years go on either end of the timeline, and the nodes in-between 
+                are spaced relative to them. <b>QuizEra depends on jQuery</b>, so make sure it is loaded before QuizEra.js. Our final example will be a larger American history timeline quiz 
+                showcasing the capabilities of QuizEra:
+            </p>
+            <div id='quiz-2'></div>
+            <p style='position: absolute; right: 0px;'>
+                <b>QuizEra</b> was created by: <a href="https://github.com/Nathan7934">Nathan Raymant</a>
+            </p>
+            <p style='position: absolute; right: 0px; top: 1205px;'>
+                American history timeline reference: <a href="https://www.dummies.com/education/history/american-history/u-s-history-for-dummies-cheat-sheet/">dummies.com</a>
+            </p>
+        </div>
+    </body>
+</html>

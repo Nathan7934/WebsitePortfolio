@@ -1,0 +1,77 @@
+/* This style sheet adds some custom elements to QuizEra, like custom scrollbars and other pseudo-element properties. */
+
+/* .qe-main-container {
+    font-family: Georgia, sans-serif;
+} */
+.node-choices::-webkit-scrollbar, .choice-desc::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+
+.node-choices::-webkit-scrollbar-track, .choice-desc::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.node-choices::-webkit-scrollbar-thumb, .choice-desc::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.node-choices::-webkit-scrollbar-thumb:hover, .choice-desc::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
+
+.node-choices {
+    /* Disables text highlighting for node choices. It interferes with the drag-and-drop process */
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none;
+    font-family: Georgia;
+}
+
+.node {
+    position: absolute; 
+    bottom: -8px; 
+    background-color: white; 
+    border: 3px solid black; 
+    border-radius: 50%; 
+    height: 15px; 
+    width: 15px; 
+    display: inline-block;
+    transition-duration: 0.2s;
+}
+
+.node:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+}
+
+.qe-btn {
+    font-family: "Gill Sans", sans-serif;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10%;
+    transition-duration: 0.2s;
+}
+
+.qe-btn:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+}
+
+.pa-btn {
+    font-family: "Gill Sans", sans-serif;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    transition-duration: 0.2s;
+}
+
+.pa-btn:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+}

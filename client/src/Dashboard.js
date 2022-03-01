@@ -43,15 +43,17 @@ class Dashboard extends React.Component {
                             description={`A user-friendly Java Swing scripting application for automating desktop 
                                           inputs.`}
                             aLinkURL=""
-                            aLinkText="View the demo"
+                            aLinkViewRef="SimpleScripter"
+                            aLinkText="Learn more"
                             previewPath="project_previews/ss_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/ss_thumbnail.png"
                             use_compact={use_compact}/>
             <ProjectItem title="QuizEra"
                             description={`A JavaScript library that allows 
                                           web developers to generate custom interactive timeline quizzes.`}
-                            aLinkURL=""
-                            aLinkText="View the demo"
+                            aLinkURL={!use_compact ? "QuizEra/demo.html" : ""}
+                            aLinkViewRef="QuizEra"
+                            aLinkText="Learn more"
                             previewPath="project_previews/qe_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
                             use_compact={use_compact}/>
@@ -67,6 +69,7 @@ class Dashboard extends React.Component {
                             description={`A food-based social media prototype with an Express back end
                                           handling database queries.`}
                             aLinkURL=""
+                            aLinkViewRef="BreakfastClub"
                             aLinkText="View the demo"
                             previewPath="project_previews/bc_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/bc_thumbnail.png"
@@ -75,6 +78,7 @@ class Dashboard extends React.Component {
                             description={`Includes a robust messenger subprogram complete with group
                                           conversations.`}
                             aLinkURL=""
+                            aLinkViewRef="ESCLI"
                             aLinkText="View source code"
                             previewPath="project_previews/es_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/es_thumbnail.png"
@@ -87,13 +91,13 @@ class Dashboard extends React.Component {
         */
         return(<>
             <a className="linkedIn contactIco" href="https://www.linkedin.com/in/nathanraymant/" target="_blank">
-                <img src="linkedin.png" width="100%" height="100%"></img>
+                <img src="contact_icons/linkedin.png" width="100%" height="100%"></img>
             </a>
             <a className="email contactIco" onClick={() => Linking.openURL('mailto:nathanraymant@gmail.com')}>
-                <img src="email.png" width="100%" height="100%"></img>
+                <img src="contact_icons/email.png" width="100%" height="100%"></img>
             </a>
             <a className="gitHub contactIco" href="https://github.com/Nathan7934" target="_blank">
-                <img src="github.png" width="100%" height="100%"></img>
+                <img src="contact_icons/github.png" width="100%" height="100%"></img>
             </a>
         </>);
     }

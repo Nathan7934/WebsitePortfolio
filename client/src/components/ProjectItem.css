@@ -57,3 +57,11 @@
     font-size: 80%;
     opacity: 60%;
 }
+
+.aLinkUnclickable {
+    pointer-events: none;
+    color: rgb(160, 160, 160);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80%;
+    opacity: 60%;
+}

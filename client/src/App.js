@@ -2,8 +2,7 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import SimpleScripter from './views/SimpleScripterDemo';
-import QuizEra from './views/QuizEraDemo';
-import BreakfastClub from './views/QuizEraDemo';
+import BreakfastClub from './views/BreakfastClubDemo';
 import EventSchedulerCLI from './views/EventSchedulerCLIDemo';
 
 /* 
@@ -25,9 +24,6 @@ class App extends React.Component {
 
                     <Route exact path='/SimpleScripter' render={() => (
                         <SimpleScripter/>
-                    )}/>
-                    <Route exact path='/QuizEra' render={() => (
-                        <QuizEra/>
                     )}/>
                     <Route exact path='/BreakfastClub' render={() => (
                         <BreakfastClub/>
