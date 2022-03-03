@@ -1,0 +1,110 @@
+.ssTitleHeader {
+    position: relative;
+    color: white;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 250%;
+    margin-top: 75px;
+}
+
+.ssContent {
+    position: absolute;
+    left: 50%;
+    top: 165px;
+    transform: translate(-50%, 0);
+    width: 80%;
+    max-width: 1200px;
+    color: white;
+}
+
+.ssIntroBlurb {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    /* text-indent: 30px; */
+    line-height: 1.4;
+    text-align: center;
+}
+
+.blurbWrapper {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.ssFeaturesHeader {
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 125%;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.ssFeatures {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 90%;
+    margin-right: 10px;
+}
+
+li {
+    margin-top: 7px;
+}
+
+.ssScreenshots {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.ssScreenshot1 {
+    margin-right: 7px;
+    margin-left: 7px;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+.ssScreenshot2 {
+    margin-left: 7px;
+    margin-right: 7px;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+.ssClosingRemarks {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 110%;
+    margin-top: 20px;
+}
+
+.ssDownload {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.ssDButton {
+    display: inline-block;
+    background: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 150%;
+}
+
+.ssDjar {
+    color: rgb(136, 136, 136);
+    transition: 0.25s;
+}
+
+.ssDexe:hover {
+    color: white;
+}
+
+.ssDjar:hover {
+    color: white;
+}
+
+ul {
+    padding-left: 30px;
+}

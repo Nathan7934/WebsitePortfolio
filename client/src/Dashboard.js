@@ -68,18 +68,18 @@ class Dashboard extends React.Component {
             <ProjectItem title="Breakfast Club"
                             description={`A food-based social media prototype with an Express back end
                                           handling database queries.`}
-                            aLinkURL=""
+                            aLinkURL="https://github.com/Nathan7934/BreakfastClub"
                             aLinkViewRef="BreakfastClub"
-                            aLinkText="View the demo"
+                            aLinkText="Source Code"
                             previewPath="project_previews/bc_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/bc_thumbnail.png"
                             use_compact={use_compact}/>
             <ProjectItem title="Event Scheduler CLI"
                             description={`Includes a robust messenger subprogram complete with group
                                           conversations.`}
-                            aLinkURL=""
+                            aLinkURL="https://github.com/Nathan7934/EventSchedulerCLI"
                             aLinkViewRef="ESCLI"
-                            aLinkText="View source code"
+                            aLinkText="Source code"
                             previewPath="project_previews/es_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/es_thumbnail.png"
                             use_compact={use_compact}/>
