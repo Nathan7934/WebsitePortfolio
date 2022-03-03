@@ -55,7 +55,7 @@ class SimpleScripterDemo extends React.Component {
                     Download the program yourself to try it out <br/>(Windows & Java Required):
                 </div>
                 <div className="ssDownload">
-                    <a className="ssDButton ssDjar" href={SimpleScripterJAR} download>Download (.jar)</a>
+                    <a className="ssDButton ssDjar" href={SimpleScripterJAR} download="SimpleScripterJAR.zip">Download (.jar)</a>
                 </div>
             </div>
         </>);
