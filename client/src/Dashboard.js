@@ -57,6 +57,14 @@ class Dashboard extends React.Component {
                             previewPath="project_previews/qe_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
                             use_compact={use_compact}/>
+            <ProjectItem title="Invoice Demo"
+                            description={`A front-end UX showcase. Built with ReactJS and styled 
+                                          using TailwindCSS.`}
+                            aLinkURL="InvoiceDemo/index.html"
+                            aLinkText="Try it out"
+                            previewPath="project_previews/id_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/id_thumbnail.png"
+                            use_compact={use_compact}/>
             <ProjectItem title="Portfolio Site"
                             description={`Built using ReactJS. The styling, 
                                           animations, layouts and components were done by hand.`}
@@ -154,7 +162,7 @@ class Dashboard extends React.Component {
                 <div style={{margin: "0 auto", maxWidth: "900px", textAlign: "center"}}>
                     <img src="resumeCompact.png" style={{maxWidth: "100%", height: "auto"}}></img>
                 </div>
-                <a className="pdfDownload_C" href="./Resume.pdf" download><img src="pdfDownload_C.png"></img></a>
+                <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
             </>);
         }
         return (<>
