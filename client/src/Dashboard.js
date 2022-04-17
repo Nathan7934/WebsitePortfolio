@@ -51,17 +51,16 @@ class Dashboard extends React.Component {
             <ProjectItem title="QuizEra"
                             description={`A JavaScript library that allows 
                                           web developers to generate custom interactive timeline quizzes.`}
-                            aLinkURL={!use_compact ? "QuizEra/demo.html" : ""}
-                            aLinkViewRef="QuizEra"
-                            aLinkText="Learn more"
+                            aLinkURL={use_compact ? "https://github.com/Nathan7934/QuizEra" : "QuizEra/demo.html"}
+                            aLinkText={use_compact ? "Source code" : "Learn more"}
                             previewPath="project_previews/qe_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
                             use_compact={use_compact}/>
             <ProjectItem title="Invoice Demo"
                             description={`A front-end UX showcase. Built with ReactJS and styled 
                                           using TailwindCSS.`}
-                            aLinkURL="InvoiceDemo/index.html"
-                            aLinkText="Try it out"
+                            aLinkURL={use_compact ? "https://github.com/Nathan7934/InvoiceDemo" : "InvoiceDemo/index.html"}
+                            aLinkText={use_compact ? "Source code" : "View demo"}
                             previewPath="project_previews/id_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/id_thumbnail.png"
                             use_compact={use_compact}/>

@@ -50,8 +50,6 @@ class ProjectItem extends React.Component {
                             <a className="accessLink">{aLinkText}</a>
                         </Link>
                     </>);
-                case "QuizEra":
-                    return(<a className="aLinkUnclickable">Use PC to learn more</a>)
                 case "ESCLI":
                     return (<>
                         <Link to={"./EventSchedulerCLI"} target="_blank" rel="noopener noreferrer">
