@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import clsx from 'clsx';
 import { Document, Page } from 'react-pdf';
 import { Linking } from 'react-native'
@@ -8,31 +8,26 @@ import resumePDF from './resources/Resume.pdf';
 import './styles/Dashboard.css';
 import './styles/DashCompact.css';
 import './styles/ContactMe.css';
-
-class Dashboard extends React.Component {
+function Dashboard() {
     /* The code for the main page of the site */
 
-    constructor(props) {
-        super(props);
-        this.state = {use_compact: window.innerWidth < 900 ? true : false, 
-                      projects_left: true};
-        this.updateViewWidth = this.updateViewWidth.bind(this);
-    }
-    // The below lifecycle functions are used to update the correct value 
-    // for the view_width state. 'resize' event triggers the callback function
-    componentWillMount() {
-        this.updateViewWidth();
-        window.addEventListener('resize', this.updateViewWidth);
-    }
-    componentWillUnmount() {
-        this.removeEventListener('resize', this.updateViewWidth)
-    }
-    updateViewWidth() {
-        this.setState({use_compact: window.innerWidth < 900 ? true : false});
-        if (this.state.use_compact) { console.log("Compact mode enabled") }
+    const [use_compact, setUseCompact] = useState(window.innerWidth < 900 ? true : false);
+    const [projects_left, setProjectsLeft] = useState(true);
+
+    // Hook updates the view_width state when the window is resized
+    useEffect(() => {
+        updateViewWidth();
+        window.addEventListener('resize', updateViewWidth);
+
+        return( () => window.removeEventListener('resize', updateViewWidth));
+    }, []);
+
+    const updateViewWidth = () => {
+        setUseCompact(window.innerWidth < 900 ? true : false);
+        if (use_compact) { console.log("Compact mode enabled"); }
     }
 
-    renderProjects = (use_compact) => {
+    const renderProjects = (use_compact) => {
         /*  Renders the project items/cards using the ProjectItem React component.
             The content of the cards is passed through to the component code as properties.
         */
@@ -93,7 +88,7 @@ class Dashboard extends React.Component {
         </>);
     }
 
-    renderContacts = () => {
+    const renderContacts = () => {
         /*  Renders the contact buttons (linkedIn, email, GitHub)
         */
         return(<>
@@ -109,7 +104,7 @@ class Dashboard extends React.Component {
         </>);
     }
 
-    renderViewButtons = (use_compact, projects_left) => {
+    const renderViewButtons = () => {
         /*  Renders the view select buttons (i.e., the 'Projects' and 'Résumé' buttons).
             Animations are controlled by conditionally adding CSS classes using the 'clsx' module and states.
         */
@@ -117,9 +112,9 @@ class Dashboard extends React.Component {
             <div className={clsx({viewButtons: !use_compact, viewButtons_C: use_compact})}>
                 <button className={clsx({btnStyle: true, projectsBtn: !use_compact, projectsBtn_C: use_compact})}
                 onClick={() => {
-                    if (!this.state.projects_left) {
+                    if (!projects_left) {
                         // play animation RtoL
-                        this.setState({projects_left: true});
+                        setProjectsLeft(true);
                     }
                 }}><div className={clsx({blackText: true, blackTextHoverable: !projects_left})}>
                     <div className="blackTextText">Projects</div></div>
@@ -130,9 +125,9 @@ class Dashboard extends React.Component {
                 </div>
                 <button className={clsx({btnStyle: true, resumeBtn: !use_compact, resumeBtn_C: use_compact})}
                 onClick={() => {
-                    if (this.state.projects_left) {
+                    if (projects_left) {
                         // play animation LtoR
-                        this.setState({projects_left: false});
+                        setProjectsLeft(false);
                     }
                 }}><div className={clsx({blackText: true, blackTextHoverable: projects_left})}>
                     <div className="blackTextText">R&eacute;sum&eacute;</div></div>
@@ -141,7 +136,7 @@ class Dashboard extends React.Component {
         </>);
     }
 
-    removeTextLayerOffset = () => {
+    const removeTextLayerOffset = () => {
         // Fixes the terrible text-highlighting offset for the résumé PDF.
         // Solution taken from react-pdf 'issues' page: 
         // https://github.com/wojtekmaj/react-pdf/issues/332#issuecomment-458121654
@@ -155,7 +150,7 @@ class Dashboard extends React.Component {
         });
       }
 
-    renderResume = (use_compact) => {
+    const renderResume = (use_compact) => {
         if (use_compact) {
             return (<>
                 <div style={{margin: "0 auto", maxWidth: "900px", textAlign: "center"}}>
@@ -166,61 +161,55 @@ class Dashboard extends React.Component {
         }
         return (<>
             <Document file={resumePDF}>
-                <Page pageNumber={1} onLoadSuccess={this.removeTextLayerOffset}
+                <Page pageNumber={1} onLoadSuccess={removeTextLayerOffset}
                       className={clsx({pdfPage_C: use_compact})}/>
             </Document>
             <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
         </>);
     }
 
-    renderSelectedView = (use_compact, projects_left) => {
+    const renderSelectedView = () => {
         // Renders the appropriate view depending on the state of 'projects_left'
 
         return (<>
             <div className={clsx({projects: !use_compact, projects_C: use_compact,
                                   projectsLtoC: projects_left && !use_compact, projectsLtoC_C: projects_left && use_compact, 
                                   projectsCtoL: !projects_left && !use_compact, projectsCtoL_C: !projects_left && use_compact})}>
-                {this.renderProjects(use_compact)}
+                {renderProjects(use_compact)}
             </div>
             <div className={clsx({resume: !use_compact, resume_C: use_compact, 
                                   resumeRtoC: !projects_left && !use_compact, resumeRtoC_C: !projects_left && use_compact,
                                   resumeCtoR: projects_left && !use_compact, resumeCtoR_C: projects_left && use_compact})}>
                  {/* Rendering PDF file using 'react-pdf' npm module */}
-                 {this.renderResume(use_compact)}
+                 {renderResume(use_compact)}
              </div>
         </>);
     }
 
-    determineAboutInLineSpace = () => { // Brief helper to render space if using compact (i.e. no line break)
-        if (this.state.use_compact) { return(" I make practical, user-oriented applications."); }
+    const determineAboutInLineSpace = () => { // Brief helper to render space if using compact (i.e. no line break)
+        if (use_compact) { return(" I make practical, user-oriented applications."); }
         return("I make practical, user-oriented applications.");
     }
 
-    render() {
-        // The main render function
-        const use_compact = this.state.use_compact;
-        const projects_left = this.state.projects_left;
-
-        return (<>
-            <div className={clsx({intro: !use_compact, intro_C: use_compact})}>
-                <div className={clsx({introWelcome: !use_compact, introWelcome_C: use_compact})}>
-                    Welcome<span className={clsx({welcomeComma: !use_compact, welcomeComma_C: use_compact})}>,</span>
-                </div>
-                <div className={clsx({nameVeil: !use_compact, nameVeil_C: use_compact})}></div>
-                <div className={clsx({introName: !use_compact, introName_C: use_compact})}>I'm Nathan Raymant</div>
+    return (<>
+        <div className={clsx({intro: !use_compact, intro_C: use_compact})}>
+            <div className={clsx({introWelcome: !use_compact, introWelcome_C: use_compact})}>
+                Welcome<span className={clsx({welcomeComma: !use_compact, welcomeComma_C: use_compact})}>,</span>
             </div>
-            <div className={clsx({content: !use_compact, content_C: use_compact})}>
-                <div className={clsx({aboutBio: !use_compact, aboutBio_C: use_compact})}>
-                    A Toronto based software developer and student. 
-                    <br className={clsx({breakDisabled: use_compact})}/>
-                    {this.determineAboutInLineSpace()}
-                </div>
-                {this.renderContacts()}
-                {this.renderViewButtons(use_compact, projects_left)}
-                {this.renderSelectedView(use_compact, projects_left)}
+            <div className={clsx({nameVeil: !use_compact, nameVeil_C: use_compact})}></div>
+            <div className={clsx({introName: !use_compact, introName_C: use_compact})}>I'm Nathan Raymant</div>
+        </div>
+        <div className={clsx({content: !use_compact, content_C: use_compact})}>
+            <div className={clsx({aboutBio: !use_compact, aboutBio_C: use_compact})}>
+                A Toronto based software developer and student. 
+                <br className={clsx({breakDisabled: use_compact})}/>
+                {determineAboutInLineSpace()}
             </div>
-        </>);
-    }
+            {renderContacts()}
+            {renderViewButtons()}
+            {renderSelectedView()}
+        </div>
+    </>);
 }
 
 export default Dashboard;

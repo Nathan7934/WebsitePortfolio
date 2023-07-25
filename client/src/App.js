@@ -9,32 +9,32 @@ import EventSchedulerCLI from './views/EventSchedulerCLIDemo';
     The source code for my website portfolio hosted on https://nathanraymant.com
 */
 
-class App extends React.Component {
+function App() {
     // The main router for the site - contains routes to all views/pages
 
-    render() {
-        return(<>
-            <BrowserRouter>
-                <Switch>
+    return (
+    <>
+        <BrowserRouter>
+            <Switch>
 
-                    {/* The default route which leads to the dashboard/main page */}
-                    <Route exact path='/' render={() => (
-                        <Dashboard/>
-                    )}/>
+                {/* The default route which leads to the dashboard/main page */}
+                <Route exact path='/' render={() => (
+                    <Dashboard/>
+                )}/>
 
-                    <Route exact path='/SimpleScripter' render={() => (
-                        <SimpleScripter/>
-                    )}/>
-                    <Route exact path='/BreakfastClub' render={() => (
-                        <BreakfastClub/>
-                    )}/>
-                    <Route exact path='/EventSchedulerCLI' render={() => (
-                        <EventSchedulerCLI/>
-                    )}/>
+                <Route exact path='/SimpleScripter' render={() => (
+                    <SimpleScripter/>
+                )}/>
+                <Route exact path='/BreakfastClub' render={() => (
+                    <BreakfastClub/>
+                )}/>
+                <Route exact path='/EventSchedulerCLI' render={() => (
+                    <EventSchedulerCLI/>
+                )}/>
 
-                </Switch>
-            </BrowserRouter>
-        </>);
-    }
+            </Switch>
+        </BrowserRouter>
+    </>
+    );
 }
 export default App;

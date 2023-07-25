@@ -1,10 +1,8 @@
 import React from 'react';
 
-class EventSchedulerCLIDemo extends React.Component {
-    render() {
-        return(<>
-        
-        </>);
-    }
+const EventSchedulerCLIDemo = () => {
+    return(<>
+    
+    </>);
 }
 export default EventSchedulerCLIDemo;
