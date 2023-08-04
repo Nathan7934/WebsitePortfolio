@@ -38,22 +38,28 @@ class ProjectItem extends React.Component {
         const {aLinkURL, aLinkText, aLinkViewRef} = this.props;
         if (aLinkURL == "") {
             switch(aLinkViewRef) {
+                case "Sayyara":
+                    return (<>
+                        <Link className="accessLink" to="./SayyaraDemo" target="_blank" rel="noopener noreferrer">
+                            {aLinkText}
+                        </Link>
+                    </>);
                 case "SimpleScripter":
                     return (<>
-                        <Link to={"./SimpleScripter"} target="_blank" rel="noopener noreferrer">
-                            <a className="accessLink">{aLinkText}</a>
+                        <Link className="accessLink" to="./SimpleScripter" target="_blank" rel="noopener noreferrer">
+                            {aLinkText}
                         </Link>
                     </>);
                 case "BreakfastClub":
                     return (<>
-                        <Link to={"./BreakfastClub"} target="_blank" rel="noopener noreferrer">
-                            <a className="accessLink">{aLinkText}</a>
+                        <Link className="accessLink" to="./BreakfastClub" target="_blank" rel="noopener noreferrer">
+                            {aLinkText}
                         </Link>
                     </>);
                 case "ESCLI":
                     return (<>
-                        <Link to={"./EventSchedulerCLI"} target="_blank" rel="noopener noreferrer">
-                            <a className="accessLink">{aLinkText}</a>
+                        <Link className="accessLink" to="./EventSchedulerCLI" target="_blank" rel="noopener noreferrer">
+                            {aLinkText}
                         </Link>
                     </>);
                 default:

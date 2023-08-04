@@ -54,8 +54,15 @@
 .accessLink {
     color: white;
     font-family: 'Montserrat', sans-serif;
+    transition: ease-in-out 0.2s;
     font-size: 80%;
     opacity: 60%;
+}
+
+.accessLink:hover {
+    transition: ease-in-out 0.2s;
+    color: rgb(230, 241, 255);
+    opacity: 100%;
 }
 
 .aLinkUnclickable {

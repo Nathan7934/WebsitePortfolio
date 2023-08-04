@@ -43,13 +43,14 @@ function Dashboard() {
                             previewPath="project_previews/ss_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/ss_thumbnail.png"
                             use_compact={use_compact}/>
-            <ProjectItem title="QuizEra"
-                            description={`A JavaScript library that allows 
-                                          web developers to generate custom interactive timeline quizzes.`}
-                            aLinkURL={use_compact ? "https://github.com/Nathan7934/QuizEra" : "QuizEra/demo.html"}
-                            aLinkText={use_compact ? "Source code" : "Learn more"}
-                            previewPath="project_previews/qe_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
+            <ProjectItem title="Sayyara"
+                            description={`A full stack React app which streamlines client-mechanic interaction for
+                                          automotive repair.`}
+                            aLinkURL=""
+                            aLinkViewRef="Sayyara"
+                            aLinkText="Learn more"
+                            previewPath="project_previews/say_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/say_thumbnail.png"
                             use_compact={use_compact}/>
             <ProjectItem title="Invoice Demo"
                             description={`A front-end UX showcase. Built with ReactJS and styled 
@@ -58,6 +59,14 @@ function Dashboard() {
                             aLinkText={use_compact ? "Source code" : "View demo"}
                             previewPath="project_previews/id_preview.mp4"
                             pThumbnailPath="project_previews/thumbnails/id_thumbnail.png"
+                            use_compact={use_compact}/>
+            <ProjectItem title="QuizEra"
+                            description={`A JavaScript library that allows 
+                                          web developers to generate custom interactive timeline quizzes.`}
+                            aLinkURL={use_compact ? "https://github.com/Nathan7934/QuizEra" : "QuizEra/demo.html"}
+                            aLinkText={use_compact ? "Source code" : "Learn more"}
+                            previewPath="project_previews/qe_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
                             use_compact={use_compact}/>
             <ProjectItem title="Portfolio Site"
                             description={`Built using ReactJS. The styling, 

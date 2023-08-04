@@ -1,6 +1,8 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+
 import Dashboard from './Dashboard';
+import Sayyara from './views/SayyaraDemo';
 import SimpleScripter from './views/SimpleScripterDemo';
 import BreakfastClub from './views/BreakfastClubDemo';
 import EventSchedulerCLI from './views/EventSchedulerCLIDemo';
@@ -13,28 +15,18 @@ function App() {
     // The main router for the site - contains routes to all views/pages
 
     return (
-    <>
-        <BrowserRouter>
-            <Switch>
-
+    <div>
+        <Router>
+            <Routes>
                 {/* The default route which leads to the dashboard/main page */}
-                <Route exact path='/' render={() => (
-                    <Dashboard/>
-                )}/>
-
-                <Route exact path='/SimpleScripter' render={() => (
-                    <SimpleScripter/>
-                )}/>
-                <Route exact path='/BreakfastClub' render={() => (
-                    <BreakfastClub/>
-                )}/>
-                <Route exact path='/EventSchedulerCLI' render={() => (
-                    <EventSchedulerCLI/>
-                )}/>
-
-            </Switch>
-        </BrowserRouter>
-    </>
+                <Route exact path='/' element={<Dashboard/>}/>
+                <Route exact path='/SimpleScripter' element={<SimpleScripter/>}/>
+                <Route exact path='/BreakfastClub' element={<BreakfastClub/>}/>
+                <Route exact path='/EventSchedulerCLI' element={<EventSchedulerCLI/>}/>
+                <Route exact path='/SayyaraDemo' element={<Sayyara/>}/>
+            </Routes>
+        </Router>
+    </div>
     );
 }
 export default App;
