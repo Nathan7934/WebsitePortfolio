@@ -1,0 +1,87 @@
+#sContentWrapper {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    max-width: 1000px;
+    color: white;
+}
+
+#sTitleHeader {
+    position: relative;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 350%;
+}
+
+#sIntroBlurb {
+    position: relative;
+    top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-indent: 30px;
+    line-height: 1.4;
+}
+
+.subHeader {
+    position: relative;
+    margin-top: 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 200%;
+}
+
+.showcaseHeader {
+    position: relative;
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 120%;
+    font-weight: 300;
+}
+
+.responsiveShowcase {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.homepageShowcase {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.signupShowcase {
+    position: relative;
+    margin-top: 10px;
+    max-width: 450px;
+}
+
+#sMyContributions {
+    position: relative;
+    top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.4;
+}
+
+#sShowcasePreamble {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 90%;
+}
+
+#sLinks {
+    position: relative;
+    top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.4;
+}
+
+.bolded {
+    font-weight: 800;
+}
+
+.italicized {
+    font-style: italic;
+}
