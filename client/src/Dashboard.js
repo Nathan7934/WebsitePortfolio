@@ -1,18 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import clsx from 'clsx';
 import { Document, Page } from 'react-pdf';
 import { Linking } from 'react-native'
+import CompactContext from './context/CompactContext';
 
 import ProjectItem from './components/ProjectItem';
 import resumePDF from './resources/Resume.pdf';
 import './styles/Dashboard.css';
 import './styles/DashCompact.css';
 import './styles/ContactMe.css';
+
 function Dashboard() {
     /* The code for the main page of the site */
 
-    const [use_compact, setUseCompact] = useState(window.innerWidth < 900 ? true : false);
-    const [projects_left, setProjectsLeft] = useState(true);
+    const {useCompact, setUseCompact} = useContext(CompactContext);
+    const [projectsLeft, setProjectsLeft] = useState(true);
 
     // Hook updates the view_width state when the window is resized
     useEffect(() => {
@@ -24,25 +26,16 @@ function Dashboard() {
 
     const updateViewWidth = () => {
         setUseCompact(window.innerWidth < 900 ? true : false);
-        if (use_compact) { console.log("Compact mode enabled"); }
+        if (useCompact) { console.log("Compact mode enabled"); }
     }
 
-    const renderProjects = (use_compact) => {
+    const renderProjects = () => {
         /*  Renders the project items/cards using the ProjectItem React component.
             The content of the cards is passed through to the component code as properties.
         */
 
         return (<>
             {/* The required props are: <title=str> <description=str> <aLinkURL=str> <aLinkText=str> */}
-            <ProjectItem title="SimpleScripter"
-                            description={`A user-friendly Java Swing scripting application for automating desktop 
-                                          inputs.`}
-                            aLinkURL=""
-                            aLinkViewRef="SimpleScripter"
-                            aLinkText="Learn more"
-                            previewPath="project_previews/ss_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/ss_thumbnail.png"
-                            use_compact={use_compact}/>
             <ProjectItem title="Sayyara"
                             description={`A full stack React app which streamlines client-mechanic interaction for
                                           automotive repair.`}
@@ -50,32 +43,36 @@ function Dashboard() {
                             aLinkViewRef="Sayyara"
                             aLinkText="Learn more"
                             previewPath="project_previews/say_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/say_thumbnail.png"
-                            use_compact={use_compact}/>
+                            pThumbnailPath="project_previews/thumbnails/say_thumbnail.png"/>
+            <ProjectItem title="SimpleScripter"
+                            description={`A user-friendly Java Swing scripting application for automating desktop 
+                                          inputs.`}
+                            aLinkURL=""
+                            aLinkViewRef="SimpleScripter"
+                            aLinkText="Learn more"
+                            previewPath="project_previews/ss_preview.mp4"
+                            pThumbnailPath="project_previews/thumbnails/ss_thumbnail.png"/>
             <ProjectItem title="Invoice Demo"
                             description={`A front-end UX showcase. Built with ReactJS and styled 
                                           using TailwindCSS.`}
-                            aLinkURL={use_compact ? "https://github.com/Nathan7934/InvoiceDemo" : "InvoiceDemo/index.html"}
-                            aLinkText={use_compact ? "Source code" : "View demo"}
+                            aLinkURL={useCompact ? "https://github.com/Nathan7934/InvoiceDemo" : "InvoiceDemo/index.html"}
+                            aLinkText={useCompact ? "Source code" : "View demo"}
                             previewPath="project_previews/id_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/id_thumbnail.png"
-                            use_compact={use_compact}/>
+                            pThumbnailPath="project_previews/thumbnails/id_thumbnail.png"/>
             <ProjectItem title="QuizEra"
                             description={`A JavaScript library that allows 
                                           web developers to generate custom interactive timeline quizzes.`}
-                            aLinkURL={use_compact ? "https://github.com/Nathan7934/QuizEra" : "QuizEra/demo.html"}
-                            aLinkText={use_compact ? "Source code" : "Learn more"}
+                            aLinkURL={useCompact ? "https://github.com/Nathan7934/QuizEra" : "QuizEra/demo.html"}
+                            aLinkText={useCompact ? "Source code" : "View demo"}
                             previewPath="project_previews/qe_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"
-                            use_compact={use_compact}/>
-            <ProjectItem title="Portfolio Site"
+                            pThumbnailPath="project_previews/thumbnails/qe_thumbnail.png"/>
+            {/* <ProjectItem title="Portfolio Site"
                             description={`Built using ReactJS. The styling, 
                                           animations, layouts and components were done by hand.`}
                             aLinkURL="https://github.com/Nathan7934/WebsitePortfolio"
                             aLinkText="Source code"
                             previewPath="project_previews/wp_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/wp_thumbnail.png"
-                            use_compact={use_compact}/>
+                            pThumbnailPath="project_previews/thumbnails/wp_thumbnail.png"/> */}
             <ProjectItem title="Breakfast Club"
                             description={`A food-based social media prototype with an Express back end
                                           handling database queries.`}
@@ -83,8 +80,7 @@ function Dashboard() {
                             aLinkViewRef="BreakfastClub"
                             aLinkText="Source Code"
                             previewPath="project_previews/bc_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/bc_thumbnail.png"
-                            use_compact={use_compact}/>
+                            pThumbnailPath="project_previews/thumbnails/bc_thumbnail.png"/>
             <ProjectItem title="Event Scheduler CLI"
                             description={`Includes a robust messenger subprogram complete with group
                                           conversations.`}
@@ -92,8 +88,7 @@ function Dashboard() {
                             aLinkViewRef="ESCLI"
                             aLinkText="Source code"
                             previewPath="project_previews/es_preview.mp4"
-                            pThumbnailPath="project_previews/thumbnails/es_thumbnail.png"
-                            use_compact={use_compact}/>
+                            pThumbnailPath="project_previews/thumbnails/es_thumbnail.png"/>
         </>);
     }
 
@@ -118,27 +113,27 @@ function Dashboard() {
             Animations are controlled by conditionally adding CSS classes using the 'clsx' module and states.
         */
         return (<>
-            <div className={clsx({viewButtons: !use_compact, viewButtons_C: use_compact})}>
-                <button className={clsx({btnStyle: true, projectsBtn: !use_compact, projectsBtn_C: use_compact})}
+            <div className={clsx({viewButtons: !useCompact, viewButtons_C: useCompact})}>
+                <button className={clsx({btnStyle: true, projectsBtn: !useCompact, projectsBtn_C: useCompact})}
                 onClick={() => {
-                    if (!projects_left) {
+                    if (!projectsLeft) {
                         // play animation RtoL
                         setProjectsLeft(true);
                     }
-                }}><div className={clsx({blackText: true, blackTextHoverable: !projects_left})}>
+                }}><div className={clsx({blackText: true, blackTextHoverable: !projectsLeft})}>
                     <div className="blackTextText">Projects</div></div>
                 </button>
                 <div className={clsx({viewIndicator: true,
-                                      viewIndicatorRtoL: projects_left && !use_compact, viewIndicatorRtoL_C: projects_left && use_compact, 
-                                      viewIndicatorLtoR: !projects_left && !use_compact, viewIndicatorLtoR_C: !projects_left && use_compact})}>  
+                                      viewIndicatorRtoL: projectsLeft && !useCompact, viewIndicatorRtoL_C: projectsLeft && useCompact, 
+                                      viewIndicatorLtoR: !projectsLeft && !useCompact, viewIndicatorLtoR_C: !projectsLeft && useCompact})}>  
                 </div>
-                <button className={clsx({btnStyle: true, resumeBtn: !use_compact, resumeBtn_C: use_compact})}
+                <button className={clsx({btnStyle: true, resumeBtn: !useCompact, resumeBtn_C: useCompact})}
                 onClick={() => {
-                    if (projects_left) {
+                    if (projectsLeft) {
                         // play animation LtoR
                         setProjectsLeft(false);
                     }
-                }}><div className={clsx({blackText: true, blackTextHoverable: projects_left})}>
+                }}><div className={clsx({blackText: true, blackTextHoverable: projectsLeft})}>
                     <div className="blackTextText">R&eacute;sum&eacute;</div></div>
                 </button>
             </div>
@@ -159,8 +154,8 @@ function Dashboard() {
         });
       }
 
-    const renderResume = (use_compact) => {
-        if (use_compact) {
+    const renderResume = () => {
+        if (useCompact) {
             return (<>
                 <div style={{margin: "0 auto", maxWidth: "900px", textAlign: "center"}}>
                     <img src="resumeCompact.png" style={{maxWidth: "100%", height: "auto"}}></img>
@@ -171,7 +166,7 @@ function Dashboard() {
         return (<>
             <Document file={resumePDF}>
                 <Page pageNumber={1} onLoadSuccess={removeTextLayerOffset}
-                      className={clsx({pdfPage_C: use_compact})}/>
+                      className={clsx({pdfPage_C: useCompact})}/>
             </Document>
             <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
         </>);
@@ -181,37 +176,37 @@ function Dashboard() {
         // Renders the appropriate view depending on the state of 'projects_left'
 
         return (<>
-            <div className={clsx({projects: !use_compact, projects_C: use_compact,
-                                  projectsLtoC: projects_left && !use_compact, projectsLtoC_C: projects_left && use_compact, 
-                                  projectsCtoL: !projects_left && !use_compact, projectsCtoL_C: !projects_left && use_compact})}>
-                {renderProjects(use_compact)}
+            <div className={clsx({projects: !useCompact, projects_C: useCompact,
+                                  projectsLtoC: projectsLeft && !useCompact, projectsLtoC_C: projectsLeft && useCompact, 
+                                  projectsCtoL: !projectsLeft && !useCompact, projectsCtoL_C: !projectsLeft && useCompact})}>
+                {renderProjects()}
             </div>
-            <div className={clsx({resume: !use_compact, resume_C: use_compact, 
-                                  resumeRtoC: !projects_left && !use_compact, resumeRtoC_C: !projects_left && use_compact,
-                                  resumeCtoR: projects_left && !use_compact, resumeCtoR_C: projects_left && use_compact})}>
+            <div className={clsx({resume: !useCompact, resume_C: useCompact, 
+                                  resumeRtoC: !projectsLeft && !useCompact, resumeRtoC_C: !projectsLeft && useCompact,
+                                  resumeCtoR: projectsLeft && !useCompact, resumeCtoR_C: projectsLeft && useCompact})}>
                  {/* Rendering PDF file using 'react-pdf' npm module */}
-                 {renderResume(use_compact)}
+                 {renderResume()}
              </div>
         </>);
     }
 
     const determineAboutInLineSpace = () => { // Brief helper to render space if using compact (i.e. no line break)
-        if (use_compact) { return(" I make practical, user-oriented applications."); }
+        if (useCompact) { return(" I make practical, user-oriented applications."); }
         return("I make practical, user-oriented applications.");
     }
 
     return (<>
-        <div className={clsx({intro: !use_compact, intro_C: use_compact})}>
-            <div className={clsx({introWelcome: !use_compact, introWelcome_C: use_compact})}>
-                Welcome<span className={clsx({welcomeComma: !use_compact, welcomeComma_C: use_compact})}>,</span>
+        <div className={clsx({intro: !useCompact, intro_C: useCompact})}>
+            <div className={clsx({introWelcome: !useCompact, introWelcome_C: useCompact})}>
+                Welcome<span className={clsx({welcomeComma: !useCompact, welcomeComma_C: useCompact})}>,</span>
             </div>
-            <div className={clsx({nameVeil: !use_compact, nameVeil_C: use_compact})}></div>
-            <div className={clsx({introName: !use_compact, introName_C: use_compact})}>I'm Nathan Raymant</div>
+            <div className={clsx({nameVeil: !useCompact, nameVeil_C: useCompact})}></div>
+            <div className={clsx({introName: !useCompact, introName_C: useCompact})}>I'm Nathan Raymant</div>
         </div>
-        <div className={clsx({content: !use_compact, content_C: use_compact})}>
-            <div className={clsx({aboutBio: !use_compact, aboutBio_C: use_compact})}>
+        <div className={clsx({content: !useCompact, content_C: useCompact})}>
+            <div className={clsx({aboutBio: !useCompact, aboutBio_C: useCompact})}>
                 A Toronto based software developer and student. 
-                <br className={clsx({breakDisabled: use_compact})}/>
+                <br className={clsx({breakDisabled: useCompact})}/>
                 {determineAboutInLineSpace()}
             </div>
             {renderContacts()}

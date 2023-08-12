@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import HoverVideoPlayer from 'react-hover-video-player';
 import clsx from 'clsx';
+import CompactContext from '../context/CompactContext';
 
 import '../styles/SayyaraDemo.css';
 
 function SayyaraDemo() {
 
-    const [use_compact, setUseCompact] = useState(window.innerWidth < 900 ? true : false);
+    const {useCompact, setUseCompact} = useContext(CompactContext);
 
     // Hook updates the view_width state when the window is resized
     // TODO: This is duplicated from Dashboard.js - in the future, update the site to utilize a Context hook.
@@ -19,7 +20,7 @@ function SayyaraDemo() {
 
     const updateViewWidth = () => {
         setUseCompact(window.innerWidth < 900 ? true : false);
-        if (use_compact) { console.log("Compact mode enabled"); }
+        if (useCompact) { console.log("Compact mode enabled"); }
     }
 
     return (<div id="sContentWrapper">
@@ -58,23 +59,44 @@ function SayyaraDemo() {
         <div className='showcaseHeader'>Responsive layouts:</div>
         <HoverVideoPlayer className='responsiveShowcase'
             videoSrc="Sayyara/reponsive_big.mp4"
-            pausedOverlay={<img src="Sayyara/responsive_overlay.png" alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>}
-            restartOnPaused/>
+            pausedOverlay={<img src={useCompact ? "Sayyara/c_responsive_overlay.png" : "Sayyara/responsive_overlay.png"} 
+                            alt="" style={{width: '100%', height: '100.25%', objectFit: 'cover'}}/>}
+            restartOnPaused
+            controls={useCompact}/>
         <div className='showcaseHeader'>Homepage with custom navigation menu and CSS animations:</div>
         <HoverVideoPlayer className='homepageShowcase'
             videoSrc="Sayyara/homepage.mp4"
-            pausedOverlay={<img src="Sayyara/homepage_overlay.png" alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>}
-            restartOnPaused/>
+            pausedOverlay={<img src={useCompact ? "Sayyara/c_homepage_overlay.png" : "Sayyara/homepage_overlay.png"} 
+                                alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>}
+            restartOnPaused
+            controls={useCompact}/>
         <div style={{width: '100%', textAlign: 'left'}}>
             <div className='showcaseHeader'>"Sign Up" form with real time validation:</div>
             <HoverVideoPlayer className='signupShowcase'
                 videoSrc="Sayyara/signup.mp4"
-                pausedOverlay={<img src="Sayyara/signup_overlay.png" alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>}
+                pausedOverlay={<img src={useCompact ? "Sayyara/c_signup_overlay.png" : "Sayyara/signup_overlay.png"} 
+                                alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>}
                 restartOnPaused/>
         </div>
         <div className='subHeader'>Links and Additional Information:</div>
         <div id='sLinks'>
-            Of course, this page is not exhaustive. More information about this project - such as the full list of features - can be found at the following links:
+            More information about this project can be found at the following links:
+            <div className='sLinkItem'>
+                <a className='sLink' href='https://www.youtube.com/watch?v=UtZrf9WLq-E' target='_blank' rel='noopener'>Video Presentation</a> 
+                <br/> The recording of our group's final presentation to our partner and overseer, with myself as the first to speak. This video provides full context for the project, and contains the following in order:
+                <ul>
+                    <li>Introduction to the project, its inception, and its <span className='italicized'>goals</span></li>
+                    <li>Live <span className='italicized'>demonstration</span> of the application showcasing all implemented features</li>
+                    <li>API documentation and overview of the application's <span className='italicized'>architecture</span></li>
+                    <li>Discussion of the strengths and weaknesses of our team's development process</li>
+                </ul>
+            </div>
+            <div className='sLinkItem'>
+                <a className='sLink' href='https://github.com/Nathan7934/Sayyara' target='_blank' rel='noopener'>GitHub Repository</a>
+                <br/> The repository for the project, containing all source code for the frontend and backend. Here you will find the commit history as well as instructions on how to build the program. 
+                I would also encourage taking a look at the list of <a id='prLink' href='https://github.com/csc301-fall-2022/team-project-16-sayyara-m/pulls?q=is%3Apr+is%3Aclosed+author%3ANathan7934' target='_blank' rel='noopener'>my pull requests</a>, 
+                as they provide a more detailed overview of my contributions.
+            </div>
         </div>
     </div>);
 }

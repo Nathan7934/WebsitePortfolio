@@ -73,9 +73,55 @@
 
 #sLinks {
     position: relative;
-    top: 10px;
+    margin-top: 3px;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.4;
+    margin-bottom: 80px;
+}
+
+.sLinkItem {
+    position: relative;
+    display: block;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.404);
+    padding-top: 10px;
+}
+
+.sLinkItem li {
+    line-height: normal;
+}
+
+.sLinkItem ul {
+    margin-top: 0px;
+}
+
+.sLink {
+    display: inline-block;
+    position: relative;
+    color: #bfdbfe;
+    font-family: 'Oswald', sans-serif;
+    font-size: 140%;
+    text-decoration: underline;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.sLink:hover {
+    color: #60a5fa;
+    transition: 0.2s ease-in-out;
+}
+
+#prLink {
+    color: #bfdbfe;
+    font-weight: 500;
+    transition: 0.2s ease-in-out;
+}
+
+#prLink:hover {
+    color: #60a5fa;
+    transition: 0.2s ease-in-out;
 }
 
 .bolded {
