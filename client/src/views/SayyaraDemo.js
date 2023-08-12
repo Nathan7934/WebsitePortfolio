@@ -35,25 +35,6 @@ function SayyaraDemo() {
             Sayyara is a <span className='italicized'>fully functional prototype</span> that demonstrates the core functionality of the application, as specified by our partner who commissioned 
             the project.
         </div>
-        <div className='subHeader'>My Contributions:</div>
-        <div id='sMyContributions'>
-            As the primary frontend developer, I designed and implemented the core frontend pages and components.
-            <ul>
-                <li>Said pages and components were designed to be <span className='bolded'>fully responsive</span>, with dynamic and flexible layouts providing a comfortable experience for any device.</li>
-                <li>Laid the groundwork for Sayyara's overall UI/UX experience, providing <span className='bolded'>component templates</span> for other frontend developers on the team.</li>
-            </ul>
-            I oversaw the frontend's integration with the backend through careful utilization of the rich and flexible <span className='bolded'>REST API</span> provided by the backend team.
-            <ul>
-                <li>This was achieved through the implementation of <span className='bolded'>custom React hooks</span> for <span className='bolded'>fetch API</span> calls, which standardized and simplified database 
-                communication throughout the frontend.</li>
-            </ul>
-            I managed and implemented the <span className='bolded'>authentication framework</span> for the application's frontend, built upon the <span className='bolded'>JWT</span> authentication system provided by the backend team.
-            <ul>
-                <li>To accomplish this, I created <span className='bolded'>React hooks</span> which <span className='italicized'>wrap all API calls</span> and automatically attach the appropriate <span className='bolded'>JWT tokens</span> to the request header.</li>
-                <li><span className='bolded'>Access tokens</span> for short-term authentication were stored with the browser instance using the <span className='bolded'>React Context hook</span> to avoid prop drilling, whereas 
-                <span className='bolded'> refresh tokens</span> were stored locally within the user's <span className='bolded'>browser cookies</span> for long-term retrieval.</li>
-            </ul>
-        </div>
         <div className='subHeader'>UI/UX Showcase:</div>
         <div id='sShowcasePreamble'>The pages and components displayed below were designed and implemented by myself.</div>
         <div className='showcaseHeader'>Responsive layouts:</div>
@@ -77,6 +58,25 @@ function SayyaraDemo() {
                 pausedOverlay={<img src={useCompact ? "Sayyara/c_signup_overlay.png" : "Sayyara/signup_overlay.png"} 
                                 alt="" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>}
                 restartOnPaused/>
+        </div>
+        <div className='subHeader'>My Contributions:</div>
+        <div id='sMyContributions'>
+            As the primary frontend developer, I designed and implemented the core frontend pages and components.
+            <ul>
+                <li>Said pages and components were designed to be <span className='bolded'>fully responsive</span>, with dynamic and flexible layouts providing a comfortable experience for any device.</li>
+                <li>Laid the groundwork for Sayyara's overall UI/UX experience, providing <span className='bolded'>component templates</span> for other frontend developers on the team.</li>
+            </ul>
+            I oversaw the frontend's integration with the backend through careful utilization of the rich and flexible <span className='bolded'>REST API</span> provided by the backend team.
+            <ul>
+                <li>This was achieved through the implementation of <span className='bolded'>custom React hooks</span> for <span className='bolded'>fetch API</span> calls, which standardized and simplified database 
+                communication throughout the frontend.</li>
+            </ul>
+            I managed and implemented the <span className='bolded'>authentication framework</span> for the application's frontend, built upon the <span className='bolded'>JWT</span> authentication system provided by the backend team.
+            <ul>
+                <li>To accomplish this, I created <span className='bolded'>React hooks</span> which <span className='italicized'>wrap all API calls</span> and automatically attach the appropriate <span className='bolded'>JWT tokens</span> to the request header.</li>
+                <li><span className='bolded'>Access tokens</span> for short-term authentication were stored with the browser instance using the <span className='bolded'>React Context hook</span> to avoid prop drilling, whereas 
+                <span className='bolded'> refresh tokens</span> were stored locally within the user's <span className='bolded'>browser cookies</span> for long-term retrieval.</li>
+            </ul>
         </div>
         <div className='subHeader'>Links and Additional Information:</div>
         <div id='sLinks'>
