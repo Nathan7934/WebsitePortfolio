@@ -3,9 +3,11 @@ import clsx from 'clsx';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { Linking } from 'react-native'
 import CompactContext from './context/CompactContext';
-
 import ProjectItem from './components/ProjectItem';
+
 import resumePDF from './resources/Resume.pdf';
+import pdfDownloadSVG from './resources/pdfDownload.svg';
+
 import './styles/Dashboard.css';
 import './styles/DashCompact.css';
 import './styles/ContactMe.css';
@@ -175,7 +177,7 @@ function Dashboard() {
             <Document file={resumePDF}>
                 <Page pageNumber={1} onLoadSuccess={removeTextLayerOffset} />
             </Document>
-            <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
+            <a className="pdfDownload" href="./Resume.pdf" download><img src={pdfDownloadSVG}></img></a>
         </>);
     }
 

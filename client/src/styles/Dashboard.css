@@ -149,11 +149,11 @@ background: rgb(58, 58, 58);
     right: 10px;
     width: 35px;
     height: 35px;
-    transition: 0.5s;
+    transition: 0.3s;
     z-index: 99 !important;
 }
 .pdfDownload:hover {
-    opacity: 50%;
+    opacity: 80%;
 }
 
 /* === C. Animations === */
