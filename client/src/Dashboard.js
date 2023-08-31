@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import clsx from 'clsx';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
 import { Linking } from 'react-native'
 import CompactContext from './context/CompactContext';
 
@@ -9,6 +9,14 @@ import resumePDF from './resources/Resume.pdf';
 import './styles/Dashboard.css';
 import './styles/DashCompact.css';
 import './styles/ContactMe.css';
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+
+// Set global pdf worker for react-pdf
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.js',
+    import.meta.url,
+).toString();
 
 function Dashboard() {
     /* The code for the main page of the site */
@@ -165,8 +173,7 @@ function Dashboard() {
         }
         return (<>
             <Document file={resumePDF}>
-                <Page pageNumber={1} onLoadSuccess={removeTextLayerOffset}
-                      className={clsx({pdfPage_C: useCompact})}/>
+                <Page pageNumber={1} onLoadSuccess={removeTextLayerOffset} />
             </Document>
             <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
         </>);

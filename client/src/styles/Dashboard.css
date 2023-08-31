@@ -150,6 +150,7 @@ background: rgb(58, 58, 58);
     width: 35px;
     height: 35px;
     transition: 0.5s;
+    z-index: 99 !important;
 }
 .pdfDownload:hover {
     opacity: 50%;
