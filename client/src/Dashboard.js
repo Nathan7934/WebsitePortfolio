@@ -14,12 +14,6 @@ import './styles/ContactMe.css';
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-// Set global pdf worker for react-pdf
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url,
-).toString();
-
 function Dashboard() {
     /* The code for the main page of the site */
 
@@ -28,6 +22,7 @@ function Dashboard() {
 
     // Hook updates the view_width state when the window is resized
     useEffect(() => {
+        pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
         updateViewWidth();
         window.addEventListener('resize', updateViewWidth);
 
