@@ -209,8 +209,9 @@ function Dashboard() {
         </div>
         <div className={clsx({content: !useCompact, content_C: useCompact})}>
             <div className={clsx({aboutBio: !useCompact, aboutBio_C: useCompact})}>
-                A Toronto based software developer and student. 
-                <br className={clsx({breakDisabled: useCompact})}/>
+                A Toronto based software developer. 
+                {/* Conditional break not necessary with current about blurb length */}
+                <br className={''/*clsx({breakDisabled: useCompact})*/}/>
                 {determineAboutInLineSpace()}
             </div>
             {renderContacts()}
