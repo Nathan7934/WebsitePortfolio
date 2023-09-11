@@ -165,7 +165,7 @@ function Dashboard() {
                 <div style={{margin: "0 auto", maxWidth: "900px", textAlign: "center"}}>
                     <img src="resumeCompact.png" style={{maxWidth: "100%", height: "auto"}}></img>
                 </div>
-                <a className="pdfDownload" href="./Resume.pdf" download><img src="pdfDownload.png"></img></a>
+                <a className="pdfDownload" href="./Resume.pdf" download><img src={pdfDownloadSVG}></img></a>
             </>);
         }
         return (<>
@@ -209,7 +209,7 @@ function Dashboard() {
         </div>
         <div className={clsx({content: !useCompact, content_C: useCompact})}>
             <div className={clsx({aboutBio: !useCompact, aboutBio_C: useCompact})}>
-                A Toronto based software developer. 
+                A Toronto-based software developer. 
                 {/* Conditional break not necessary with current about blurb length */}
                 <br className={''/*clsx({breakDisabled: useCompact})*/}/>
                 {determineAboutInLineSpace()}
